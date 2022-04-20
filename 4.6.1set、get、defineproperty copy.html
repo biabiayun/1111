@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vendor/vue.js"></script>
+  <style>
+    .red {
+      background-color: red;
+    }
+
+    .yellow {
+      background-color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    {{myname}}————{{myage}}
+    {{10>2 ? 'aa' : 'bb'}}
+    <div :class="whichcolor">切换背景色</div>
+    <div :class=" isColor ? 'red' :'yellow' ">切换背景222</div>
+    <button @click="handleChange()">change</button>
+  </div>
+  <script>
+    new Vue({
+      el: '#box',
+      data: {
+        myname: 'Krwin',
+        myage: 50,
+        whichcolor: 'red',
+        isColor: true
+      },
+      methods: {
+        handleChange () {
+          console.log('hcccc', this)
+          this.myname = 'gai'
+          this.myage = 18
+          this.whichcolor = 'yellow'
+          this.isColor = !this.isColor
+        },
+      },
+    })
+  </script>
+</body>
+
+</html>

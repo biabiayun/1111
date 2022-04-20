@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // call语法：方法call(对象,参数1,参数2) 对象即谁想用
+      // apply语法：方法call(对象,[参数数组])
+      // bind语法：方法call(对象,参数1,参数2)()   注：返回一个函数，需要主动调用
+      var ll = {
+        name: '李雷',
+        age: 18,
+        intr(area, country) {
+          // console.log('我是李雷')
+          // console.log(this.name + '今年' + this.age + '岁' )
+          console.log(
+            this.name + '今年' + this.age + '岁' + '来自' + area + country
+          )
+        },
+      }
+      var mm = {
+        name: '梅梅',
+        age: 12,
+      }
+      ll.intr() //李雷今年18岁
+      ll.intr('非洲') //李雷今年18岁来自非洲
+      ll.intr.call(mm) //梅梅今年12岁
+      ll.intr.call(mm, '美国', '美洲') //梅梅今年12岁来自美国美洲
+      ll.intr.apply(mm, '英国') //报错 Uncaught TypeError: CreateListFromArrayLike called on non-object
+      ll.intr.apply(mm, ['意大利', '欧洲']) //梅梅今年12岁来自意大利欧洲
+      console.log(ll.intr.bind(mm)) //返回是函数
+      ll.intr.bind(mm)('韩国', '亚洲') //梅梅今年12岁来自韩国亚洲
+    </script>
+  </body>
+</html>

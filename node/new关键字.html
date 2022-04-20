@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Student(name, age) {
+        this.name = name
+        this.age = age
+      }
+      function _new() {
+        var obj = {}
+        console.log('-----', arguments)
+        console.log(arguments instanceof Array) // false
+        // arguments是伪数组，不具备数组的方法
+        /* var fn = arguments.shift()
+        //报错 Uncaught TypeError: arguments.shift is not a function
+        */
+        var fn = [].shift.call(arguments)
+        //任何一个对象的隐式原型指向构造函数的原型（即创建它的构造函数的原型）
+        obj.__proto__ = fn.prototype
+        var res = fn.apply(obj, arguments)
+        return obj
+      }
+      // var ll = new Student('李雷', 18)
+      // console.log(ll)
+      // _new(1, 2, 3)
+      var ll = _new(Student, '李雷', 18)
+      console.log(ll)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>清除浮动</title>
+    <style>
+      body {
+        font-size: 12px;
+      }
+      img {
+        width: 50rem;
+        float: left;
+      }
+      .text {
+        float: right;
+      }
+      .clearfix {
+        clear: both;
+      }
+      .news {
+        background-color: rgba(128, 128, 128, 0.04);
+        border: solid 1px black;
+        overflow: hidden;
+        *zoom: 1;
+      }
+      .news img {
+        float: left;
+      }
+      .news p {
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="./thumb-1920-418952.jpg" alt="" />
+    <span class="text">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem ullam
+    </span>
+    <!--  
+    方法一：使用带clear属性的空元素
+    在浮动元素后使用一个空元素,并在CSS中赋予{clear:both;}属性即可清理浮动。 
+    -->
+    <div class="clearfix"></div>
+    <!-- <br class="clearfix" /> -->
+    <!-- <hr class="clearfix" /> -->
+    <span class="text">Lorem ipsum dolor sit</span>
+    .news { background-color: gray; border: solid 1px black; overflow: hidden;
+    *zoom: 1; } .news img { float: left; } .news p { float: right; }
+
+    <div class="news">
+      <img src="./thumb-1920-418952.jpg" alt="" />
+      <p>some text</p>
+    </div>
+    <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</span>
+  </body>
+</html>

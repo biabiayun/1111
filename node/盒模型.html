@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vw-vh@media screen</title>
+    <style>
+      .pink {
+        width: 500px;
+        height: 500px;
+        background-color: pink;
+      }
+      .red {
+        width: 500px;
+        height: 500px;
+        background-color: aqua;
+        border: 20px solid red;
+        box-sizing: border-box;
+        padding: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pink"></div>
+    <div class="red">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit modi,
+      doloremque quos quaerat veniam aspernatur aperiam animi dicta laboriosam
+      facilis voluptas ut, quidem provident non officiis sequi. Iure,
+      consequatur placeat.
+    </div>
+    <script>
+      // typeof 返回结果："number"、"string"、"boolean"、"object"、"function" 、 "undefined" 、"symbol"。
+      // instanceof   用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上
+      var arr = [1, 2, 3]
+      console.log(arr)
+      var date = new Date()
+      console.log('typeof----', typeof arr) //object
+      console.log('typeof----', typeof date) //object
+      console.log(arr instanceof Array) //true
+      console.log(arr instanceof Object) //true
+      console.log(Array instanceof Object) //true   //数组是对象中的一种
+
+      function myInstanceof(child, parent) {
+        let left = child.__proto__
+        let right = parent.prototype
+        while (true) {
+          if (left === null) {
+            return false
+          }
+          if (left === right) {
+            return true
+          }
+          //如果一次没找到，顺着原型链向上继续找
+          left = left.__proto__
+        }
+      }
+      var arr1 = [2, 3, 4]
+      console.log('是否？？？', myInstanceof(arr, Object)) //true
+      console.log('是否？？？', myInstanceof(arr, Array)) //true
+      console.log('是否？？？', myInstanceof(arr, Date)) //false
+
+      console.log(typeof 1) // 'number'
+      console.log(typeof '1') // 'string'
+      console.log(typeof undefined) // 'undefined'
+      console.log(typeof true) // 'boolean'
+      console.log(typeof Symbol()) // 'symbol'
+      console.log(typeof null) // 'object'
+      console.log(typeof []) // 'object'
+      console.log(typeof {}) // 'object'
+      console.log(typeof console) // 'object'
+      console.log(typeof console.log) // 'function'
+    </script>
+  </body>
+</html>

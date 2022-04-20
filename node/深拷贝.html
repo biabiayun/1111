@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>深拷贝</title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      /*
+        浅拷贝：只复制指针，没有复制实际数据
+        深拷贝：连同数据一起复制
+           实现方式：
+           
+      
+      1. JSON.stringfy()  JSON.parse()
+            2.递归函数实现
+      */
+
+      var arr = [1, 2, 3]
+      var arr2 = arr
+      arr2[0] = 9
+      console.log('arr-', arr) //arr数据被改动
+      //运行结果： arr- [9, 2, 3]
+      console.log('arr2-', arr2)
+      //运行结果：arr2- [9, 2, 3]
+      //——————————————————————————
+      //——————————————————————————
+      var obj = { name: '小蜜瓜', age: 20 }
+      var obj2 = {
+        name: '大猪头',
+        hobby: ['听歌', '跳舞', '滑雪'],
+        pet: {
+          type: 'dog',
+          price: 250,
+          name: 'AA喵',
+        },
+      }
+      function Student(name, age) {
+        this.name = name
+        this.age = age
+      }
+      Student.prototype.hello = 'beauty'
+      var peo = new Student('美女', 18)
+
+      //——————————————————————
+      function deepClone(obj) {
+        let objClone = obj instanceof Array ? [] : {}
+        //if 判断 用以 防止用户不传数据，即值存在且是对象
+        if (obj && typeof obj === 'object') {
+          for (var k in obj) {
+            //继承的属性排除，不复制
+            if (obj.hasOwnProperty(k)) {
+              // 方式1 objClone[k] = obj[k]
+              // 方式2
+              if (obj[k] && typeof obj[k] === 'object') {
+                objClone[k] = deepClone(obj[k])
+              } else {
+                objClone[k] = obj[k]
+              }
+            }
+          }
+        }
+        return objClone
+      }
+      /*
+             //—————————————————— 检验 方式1
+             var nobj1 = deepClone(obj)
+             nobj1.name = '嗷嗷'
+             console.log(obj)
+             //运行结果：{name: '小蜜瓜', age: 20}
+             🍋 objClone[k] = obj[k] 深复制成功
+             var nobj2 = deepClone(obj2)
+             nobj2.hobby[0] = '撩妹'
+             console.log(obj2)
+              //运行结果：{hobby: (3) ['撩妹', '跳舞', '滑雪'],name: "大猪头",pet: {type: 'dog', price: 250, name: 'AA喵'}}
+              🍋 objClone[k] = obj[k] 深复制失败
+              */
+      //————————————————————检验 方式2
+      var nobj2 = deepClone(obj2)
+      nobj2.hobby[0] = '打球'
+      console.log(obj2)
+      //运行结果:{hobby: (3) ['听歌', '跳舞', '滑雪'],name: "大猪头",pet: {type: 'dog', price: 250, name: 'AA喵'}
+      var peo2 = deepClone(peo)
+      console.log(peo2) //{name: '美女', age: 18, hello: 'beauty'}age: 18hello: "beauty"name: "美女"} 把原型链的属性也拿到了
+      //解决方式：上述方法添加 if (obj.hasOwnProperty(k)) {}即可解决 ，修改后结果为{name: '美女', age: 18}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-size: 12px;
+      }
+      div {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+      div span {
+        width: 10rem;
+        border-radius: 10rem;
+        height: 0.4rem;
+        line-height: 0.4rem;
+      }
+      .left {
+        background: linear-gradient(
+          to right,
+          rgba(0, 140, 255, 0),
+          rgba(0, 140, 255, 0.224),
+          rgba(0, 140, 255, 0.532)
+        );
+      }
+      .right {
+        background: linear-gradient(
+          to left,
+          rgba(0, 140, 255, 0),
+          rgba(0, 140, 255, 0.224),
+          rgba(0, 140, 255, 0.532)
+        );
+      }
+      .text {
+        color: rgba(0, 140, 255, 0.532);
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <span class="left"></span>
+      <span class="text">青铜</span>
+      <span class="right"></span>
+    </div>
+  </body>
+</html>

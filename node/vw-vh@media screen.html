@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vw-vh@media screen</title>
+    <style>
+      .box {
+        width: 500px;
+        height: 500px;
+        background-color: pink;
+      }
+      .red {
+        width: 50vw;
+        height: 50vh;
+        background-color: aqua;
+      }
+      .flex {
+        background-color: rgb(255, 230, 0);
+        display: flex;
+      }
+      .f1 {
+        background-color: rgb(224, 97, 152);
+        flex: 1;
+      }
+      .f2 {
+        background-color: rgb(102, 255, 0);
+        flex: 1;
+        height: 10vh;
+      }
+      .f3 {
+        background-color: rgb(0, 170, 255);
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="red"></div>
+    </div>
+    <div class="flex">
+      <div class="f1">1</div>
+      <div class="f2">2</div>
+      <div class="f3">3</div>
+    </div>
+    <!--   百分比布局
+    rem布局
+    flex布局
+    vw 和 vh -->
+  </body>
+</html>

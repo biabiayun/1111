@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* css做三角形的方法：首先创建一个div元素，设置div的width和height为0，只用边框宽来填充，边框样式设置为实线“solid”；然后顶部边框设置颜色，剩下的三个边框的颜色设置为透明“transparent”值即可。  */
+      /* .triangle {
+        border: 50px solid;
+        width: 0px;
+        // height: 0px;  // 高度可有可无 
+        border-color: aqua transparent transparent transparent;
+      } */
+      .top {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        margin-bottom: 10px;
+      }
+      .btm {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(192, 255, 216);
+        margin-top: 150px;
+      }
+      .box {
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"><div class="top"></div></div>
+
+    <div class="btm"></div>
+
+    <!-- <div class="triangle"></div> -->
+  </body>
+</html>

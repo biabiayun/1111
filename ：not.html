@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .fancy {
+        text-shadow: 2px 2px 3px gold;
+      }
+
+      /* 类名不是 `.fancy` 的 <p> 元素 */
+      p:not(.fancy) {
+        color: green;
+      }
+
+      /* 非 <p> 元素 */
+      body :not(p) {
+        text-decoration: underline;
+      }
+
+      /* 既不是 <div> 也不是 <span> 的元素 */
+      body :not(div):not(span) {
+        background-color: aquamarine;
+      }
+
+      /* 类名不是 `.crazy` 或 `.fancy` 的元素 */
+      /* 注意，此语法尚未获广泛支持。 */
+      body :not(.crazy, .fancy) {
+        /* font-family: sans-serif; */
+        background-color: rgb(146, 127, 255);
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>p---我是一个段落。</p>
+    <p class="fancy">p---我好看极了！</p>
+    <div>div----我「不是」一个段落。</div>
+    <i>i----哈哈哈哈哈哈</i>
+  </body>
+</html>

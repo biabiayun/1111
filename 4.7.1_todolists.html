@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vendor/vue.js"></script>
+</head>
+
+<body>
+  <div id="box">
+    <input type="text" v-model="mytext">{{mytext}}
+    <button @click="handleAdd()">add</button>
+
+    <!--    <ul v-show="list.length">
+      <li v-for="(data,index) in list">
+        {{data}}
+        <button @click="handleDel(index)">del</button>
+      </li>
+    </ul>
+    <div v-show="!list.length">待办事项空空如也</div>
+     -->
+    <ul v-if="list.length>0">
+      <li v-for="(data,index) in list">
+        {{data}}
+        <button @click="handleDel(index)">del</button>
+      </li>
+    </ul>
+    <div v-else>待办事项空空如也</div>
+  </div>
+  <script>
+    new Vue({
+      el: '#box',
+      data: {
+        list: ['111', '222', '333'],
+        mytext: '444'
+      },
+      methods: {
+        handleAdd () {
+          console.log('value', this.mytext)
+          this.list.push(this.mytext)
+          //清空
+          this.mytext = ''
+          this.list
+        },
+        handleDel (index) {
+          console.log('delll', index)
+          // this.list.pop(this.list[index])
+          this.list.splice(index, 1)
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

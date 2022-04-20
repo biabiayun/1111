@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vendor/vue.js"></script>
+</head>
+
+<body>
+  <div id="box">
+    <ul>
+      <li v-for="(item,k) in li+st" :key="k">{{k}}-{{item}}</li>
+    </ul>
+    <ul>
+      <li v-for="(item,k) of list">{{k}}-{{item}}</li>
+    </ul>
+    <ul>
+      <li v-for="(item,k,i) in obj">{{k}}-{{item}}--{{i}}</li>
+    </ul>
+    <ul>
+      <li v-for="(item,k) of obj">{{k}}-{{item}}</li>
+    </ul>
+    <ul>
+      <li v-for="i in 10">{{i}}</li>
+    </ul>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#box',
+      data: {
+        list: ['111', '222', '333'],
+        obj: {
+          name: 'bob',
+          age: 15,
+          sex: '男'
+        }
+      }
+    })
+    //每次创建先创建虚拟dom，再创建真实dom，只要改完旧数据，就可以再次创建新的虚拟dom，新的dom对比老的dom——diff，对比后找出不同的，做成一个补丁，更新到真实的dom中
+    // 👇真实的dom中有多少属性
+    var nobj = document.createElement('div')
+    console.log('nobj————', nobj)
+    for (var i in nobj) {
+      console.log('iiaaiii————', i)
+    }
+
+  </script>
+</body>
+
+</html>

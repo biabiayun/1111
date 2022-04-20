@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./vendor/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="box">
+      <ul>
+        <li v-for="(item,k) in list">{{k}}-{{item}}</li>
+      </ul>
+      <ul>
+        <li v-for="(item,k) of list">{{k}}-{{item}}</li>
+      </ul>
+      <ul>
+        <li v-for="(item,k,i) in obj">{{k}}-{{item}}--{{i}}</li>
+      </ul>
+      <ul>
+        <li v-for="(item,k) of obj">{{k}}-{{item}}</li>
+      </ul>
+      <ul>
+        <li v-for="i in 10" v-infinite-scroll>{{i}}</li>
+      </ul>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: '#box',
+        data: {
+          list: ['111', '222', '333'],
+          obj: {
+            name: 'bob',
+            age: 15,
+            sex: '男',
+          },
+        },
+      })
+      // 通过.方式获取属性值，key是静态的
+      var aa = { name: 'zhang', age: 18 }
+      console.log(aa.name)
+
+      // 通过[]获取属性值, key是动态的，可以是字符串，或者数字的形式
+      var bb = { apple: 3, pear: 2 }
+      var cc = { 1: 'number1', 2: 'number2' }
+      console.log(bb['apple'])
+      console.log(cc[1]) // 注意这里的写法跟数组容易混淆，cc仍是对象，不是数组
+
+      // 获取对象所有key的方法
+      console.log(Object.keys(bb)) // 输出[ 'apple', 'pear' ]
+    </script>
+  </body>
+</html>
